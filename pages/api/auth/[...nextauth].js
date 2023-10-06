@@ -1,4 +1,3 @@
-import User from "@/backEnd/model/user";
 import { verifyPassword } from "@/backEnd/utils/auth";
 import ConnectionDB from "@/backEnd/utils/connectDB";
 import NextAuth from "next-auth/next";
@@ -6,6 +5,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import clientPromise from "@/lib/mongodb";
+import User from "@/backEnd/models/user";
 
 export const authOptions = {
     session: { strategy: 'jwt' },
