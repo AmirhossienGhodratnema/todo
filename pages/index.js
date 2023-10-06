@@ -1,4 +1,3 @@
-import Spinner from '@/components/module/spinner';
 import { Fa500Px } from 'react-icons/fa';
 
 
