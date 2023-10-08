@@ -8,6 +8,7 @@ import { MdDoneAll } from "react-icons/md";
 import RadioButton from "../element/radioButton";
 import { useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
+import { useSession } from "next-auth/react";
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -16,19 +17,25 @@ export default function TodoPage() {
     const [title, setTitle] = useState('');
     const [status, setStatus] = useState('todo');
 
+    const { data } = useSession();
+    console.log('data', data);
+
+
     const addHandler = async () => {
         const res = await fetch('/api/todo/create', {
             method: 'POST',
-            body: JSON.stringify({ title, status }),
+            body: JSON.stringify({ title, status, session: data }),
             headers: { 'Content-Type': 'application/json' }
         });
-        const data = await res.json();
-        if (data.success) {
+        const result = await res.json();
+        console.log(result)
+        if (result.success) {
             setTitle('')
             setStatus('')
-            toast.success('Create new todo');
+            toast.success('Create new todo', {position: "bottom-right",});
+            return;
         };
-        toast.error(data.message, {
+        toast.error('Todo was not created', {
             position: "bottom-right",
             autoClose: 5000,
             hideProgressBar: false,

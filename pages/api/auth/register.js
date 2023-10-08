@@ -2,6 +2,7 @@ import User from "@/backEnd/models/user";
 import { hashPassword } from "@/backEnd/utils/auth";
 import ConnectionDB from "@/backEnd/utils/connectDB";
 
+
 export default async function handler(req, res) {
     if (req.method !== 'POST') return;
     try {
@@ -14,6 +15,7 @@ export default async function handler(req, res) {
             message: 'Error: Connecting to the database'
         });
     };
+
 
     const { email, password } = req.body;
     if (!email || !password) return res.status(422).json({ success: false, status: 422, message: 'Check your email or password' });

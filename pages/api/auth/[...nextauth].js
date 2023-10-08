@@ -34,12 +34,12 @@ export const authOptions = {
                 return { email };
             }
         }),
-        GitHubProvider({
-            clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_SECRET
-        }),
+        // GitHubProvider({
+        //     clientId: process.env.GITHUB_ID,
+        //     clientSecret: process.env.GITHUB_SECRET
+        // }),
     ],
-    adapter: MongoDBAdapter(clientPromise),
+    // adapter: MongoDBAdapter(clientPromise),
 
     // pages:{
     //     signIn:'/login'

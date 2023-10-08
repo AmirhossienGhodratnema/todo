@@ -2,7 +2,7 @@ import RegisterPage from "@/components/template/registerPage";
 import { getSession } from "next-auth/react";
 
 export default function Register() {
-    return <RegisterPage/>
+    return <RegisterPage />
 };
 
 
@@ -10,7 +10,7 @@ export default function Register() {
 
 export async function getServerSideProps({ req }) {
     const session = await getSession({ req });
-    if (session.user.email) {
+    if (session) {
         return {
             redirect: {
                 destination: '/',

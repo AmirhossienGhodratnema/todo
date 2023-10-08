@@ -9,8 +9,9 @@ export default function Login() {
 
 export async function getServerSideProps({ req }) {
     const session = await getSession({ req });
-
-    if (session.user.email) {
+    console.log('Session in login', session);
+    
+    if (session) {
         return {
             redirect: {
                 destination: '/',
